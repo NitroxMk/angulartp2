@@ -1,0 +1,12 @@
+<div *ngIf="jsondata">
+
+    <div class="card" [ngClass]="{'list-group-item-success': jsondata.loveit > 0, 'list-group-item-danger': jsondata.loveit < 0}" style="width: 18rem;">
+      <div class="card-body">
+        <h5 style="display: inline;" class="card-title">{{jsondata.titre}} --- <p style="display: inline;">{{jsondata.createat}}</p></h5>
+        <p class="card-text">{{jsondata.content}}</p>
+        <button type="button" class="btn btn-success" (click)="loveitplus(jsondata.loveit)">loveit</button>
+        <button type="button" class="btn btn-danger" (click)="loveitmoin(jsondata.loveit)">dont loveit</button>
+  
+      </div>
+    </div>
+  </div>

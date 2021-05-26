@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angulartp2'`, () => {
+  it(`should have as title 'PostApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angulartp2');
+    expect(app.title).toEqual('PostApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angulartp2 app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('PostApp app is running!');
   });
 });

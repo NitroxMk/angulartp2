@@ -1,30 +1,42 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from '@auth0/angular-jwt';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { 
+  AuthGuardService as AuthGuard 
+} from './services/auth/auth-guard.service';
 import { AppComponent } from './app.component';
-import { PostListComponent } from './post-list/post-list.component';
-import { PostListItemsComponent } from './post-list-items/post-list-items.component';
-import { HomeComponent } from './home/home.component';
-import { BlogComponent } from './blog/blog.component';
-import { AppareilViewComponent } from './appareil-view/appareil-view.component';
-import { AppareilComponent } from './appareil/appareil.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
+import { SingleAppareilComponent } from './components/single-appareil/single-appareil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponent,
-    PostListItemsComponent,
-    HomeComponent,
-    BlogComponent,
-    AppareilViewComponent,
-    AppareilComponent
+    NavbarComponent,
+    NotFoundComponent,
+    LoginComponent,
+    SingleAppareilComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() { 
+          return localStorage.getItem('token');
+        } 
+     }
+   })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

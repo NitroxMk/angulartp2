@@ -1,0 +1,12 @@
+<li [ngClass]="{'list-group-item': true, 'list-group-item-success': appareilStatus == 'allumé', 'list-group-item-danger': appareilStatus == 'éteint' }">
+    <div [ngClass]="appareilStatus == 'allumé' ? 'indicator-success' : 'indicator-danger'"></div>
+    <div class="item-header">
+        <h3>{{ appareilName }}</h3>
+        <div class="date">Last update : {{ appareilDate|date :'fullDate' }}</div>
+    </div>
+    <input [(ngModel)]="appareilName" />
+    <div class="item-content">
+        {{ appareilStatus }}
+    </div>
+    <a [routerLink]="[id]">More infos...</a>
+</li>
